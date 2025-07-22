@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('directors', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name_uz');
+            $table->string('first_name_ru');
+            $table->string('last_name_uz');
+            $table->string('last_name_ru');
+            $table->string('middle_name_uz')->nullable();
+            $table->string('middle_name_ru')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('position_id');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('work_time')->nullable();
+            $table->text('biography_uz')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('directors');
+    }
+};
